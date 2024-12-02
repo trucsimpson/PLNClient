@@ -4,24 +4,26 @@
 
 // Data & default operations
 window.appInterop = {
-    toggleSidebar: function () {
-        document.querySelectorAll(".sidebartoggler").forEach((element) => {
-            element.addEventListener("click", function () {
-                document.querySelectorAll(".sidebartoggler").forEach((el) => {
-                    el.checked = true;
-                });
-                document.getElementById("main-wrapper").classList.toggle("show-sidebar");
-                document.querySelectorAll(".sidebarmenu").forEach((el) => {
-                    el.classList.toggle("close");
-                });
-                const dataTheme = document.body.getAttribute("data-sidebartype");
-                if (dataTheme === "full") {
-                    document.body.setAttribute("data-sidebartype", "mini-sidebar");
-                } else {
-                    document.body.setAttribute("data-sidebartype", "full");
-                }
-            });
+    toggleSidebarMenu: function () {
+        document.querySelectorAll(".sidebartoggler").forEach((el) => {
+            el.checked = true;
         });
+
+        const mainWrapper = document.getElementById("main-wrapper");
+        if (mainWrapper) {
+            mainWrapper.classList.toggle("show-sidebar");
+        }
+
+        document.querySelectorAll(".sidebarmenu").forEach((el) => {
+            el.classList.toggle("close");
+        });
+
+        const dataTheme = document.body.getAttribute("data-sidebartype");
+        if (dataTheme === "full") {
+            document.body.setAttribute("data-sidebartype", "mini-sidebar");
+        } else {
+            document.body.setAttribute("data-sidebartype", "full");
+        }
     }
 };
 
@@ -114,15 +116,15 @@ window.layoutInterop = {
                 if (fullSidebarElement) {
                     fullSidebarElement.checked = true;
                 }
-                document.body.setAttribute("data-sidebartype", "full");
+                this.setSidebarType("full");
 
                 const setSidebarType = () => {
                     const width =
                         window.innerWidth > 0 ? window.innerWidth : screen.width;
                     if (width < 1300) {
-                        document.body.setAttribute("data-sidebartype", "mini-sidebar");
+                        this.setSidebarType("mini-sidebar");
                     } else {
-                        document.body.setAttribute("data-sidebartype", "full");
+                        this.setSidebarType("full");
                     }
                 };
                 window.addEventListener("DOMContentLoaded", setSidebarType);
@@ -133,7 +135,7 @@ window.layoutInterop = {
                 if (miniSidebarElement) {
                     miniSidebarElement.checked = true;
                 }
-                document.body.setAttribute("data-sidebartype", "mini-sidebar");
+                this.setSidebarType("mini-sidebar");
                 break;
             default:
                 break;

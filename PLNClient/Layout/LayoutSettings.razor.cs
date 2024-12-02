@@ -20,8 +20,11 @@ namespace PLNClient.Layout
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await base.OnAfterRenderAsync(firstRender);
-            await LoadLayoutSettingsAsync();
+            if (firstRender)
+            {
+                await base.OnAfterRenderAsync(firstRender);
+                await LoadLayoutSettingsAsync();
+            }
         }
 
         // Theme mode Dark or Light

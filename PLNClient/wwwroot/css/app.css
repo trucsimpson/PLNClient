@@ -40840,7 +40840,7 @@ html[data-boxed-layout=boxed] .container-fluid, html[data-boxed-layout=boxed] .c
 }
 
     .hover-dd .dropdown-menu-nav {
-        min-width: 860px !important;
+        /*min-width: 860px !important;*/
         width: 100%
     }
 

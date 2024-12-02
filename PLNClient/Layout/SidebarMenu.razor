@@ -5,7 +5,7 @@
                 <img src="./images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
                 <img src="./images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
             </a>
-            <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none" @onclick="HandleSidebar">
                 <i class="ti ti-x"></i>
             </a>
         </div>
@@ -17,7 +17,8 @@
                     if (!string.IsNullOrEmpty(item.SpecialMenu))
                     {
                         var renderedHtml = (MarkupString)item.SpecialMenu;
-                        @renderedHtml;
+                        @renderedHtml
+                        ;
                         @if (item.HasChildren)
                         {
                             <ul class="collapse in">
