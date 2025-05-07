@@ -1,9 +1,17 @@
 ﻿@page "/divisions"
+@using PLNClient.Models
+@using PLNClient.Shared.Components
 
 <PageTitle>Divisions</PageTitle>
 
-<h3>Divisions</h3>
+<Breadcrumb Title="Divisions" BreadcrumbItems="BreadcrumbItems"></Breadcrumb>
+
+<DataTable></DataTable>
 
 @code {
-
+    private List<BreadcrumbItemModel> BreadcrumbItems = new()
+    {
+        new BreadcrumbItemModel { Label = "Assets", Url = "javascript:void(0)", IsActive = false },
+        new BreadcrumbItemModel { Label = "Divisions", IsActive = true }
+    };
 }
